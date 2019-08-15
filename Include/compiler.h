@@ -7,19 +7,16 @@ struct {
 	struct {
 		struct {
 			char *VaribleName;
-			char *VaribleType;
 			char *VaribleValue;
 		}Integers;
 		
 		struct {
 			char *VaribleName;
-			char *VaribleType;
 			char *VaribleValue;
 		}Decimals;
 		
 		struct {
 			char *VaribleName;
-			char *VaribleType;
 			char *VaribleValue;
 		}Strings;
 		
@@ -67,7 +64,6 @@ char *command, *value, *option;
 							strncpy(option, line[charStart], charLong);
 							strncat(CCP_Stack.Varibles.Strings.VaribleName, " ");
 							strncat(CCP_Stack.Varibles.Strings.VaribleName, value);
-							strncat(CCP_Stack.Varibles.Strings.VaribleType, " string ");
 							strncat(CCP_Stack.Varibles.Strings.VaribleValue, " ");
 							strncat(CCP_Stack.Varibles.Strings.VaribleValue, option);
 							strnc
@@ -79,12 +75,28 @@ char *command, *value, *option;
 								charStart++;
 							}
 							strncpy(option, line[charStart], charLong);
-							strncat(CCP_Stack.Varibles.Strings.VaribleName, " ");
-							strncat(CCP_Stack.Varibles.Strings.VaribleName, value);
-							strncat(CCP_Stack.Varibles.Strings.VaribleType, " string ");
-							strncat(CCP_Stack.Varibles.Strings.VaribleValue, " ");
-							strncat(CCP_Stack.Varibles.Strings.VaribleValue, option);
+							strcat(CCP_Stack.Varibles.Strings.VaribleName, " ");
+							strcat(CCP_Stack.Varibles.Strings.VaribleName, value);
+							strcat(CCP_Stack.Varibles.Strings.VaribleValue, " ");
+							strcat(CCP_Stack.Varibles.Strings.VaribleValue, option);
+						} else if(line[i] == '1' || line[i] == '2' || line[i] == '3' || line[i] == '4' || line[i] == '5' || line[i] == '6' || line[i] == '7' || line[i] == '8' || line[i] == '9' || line[i] == '0') {
+							charStart = i;
+							charLong = 0;
+							while(line[i] != ';' || line[i] != '\n') {
+								charLong++;
+								i++;
+							}
+							strncpy(option, line[charStart], charLong-1);
+							if(isNumber(option)==0){
+								strcat(CCP_Stack.Varibles.Integers.VaribleName, " ");
+								strcat(CCP_Stack.Varibles.Integers.VaribleName, value);
+								strcat(CCP_Stack.Varibles.Integers.VaribleValue, " ");
+								strcat(CCP_Stack.Varibles.Integers.VaribleValue, option);
+							} else {
+								printf("\"%s\" is not a number.\n", option);
+							}
 						}
+						
 					}
 				}
 			}
