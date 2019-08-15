@@ -58,3 +58,4 @@ int toNumber(char string[]) {
 		}
 	} else return 1;
 }
+// So I can commit changes xD
