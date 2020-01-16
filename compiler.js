@@ -5,10 +5,10 @@ function lex(str) {
     console.error('You need to input a string');
     return -1;
   }
-  var lxe = str => str.split(' ').map(s => s.trim()).filter(s => s.length);
+  var lxe = str => str.split(' ');
   var cLex = lxe(str);
   str = cLex;
-  var lxe = str => str.split('\t').map(s => s.trim()).filter(s => s.length);
+  var lxe = str => str.split('\t');
   var cLex = lxe(str);
   str = cLex;
   var lxe = str => str.split('+').map(s => s.trim()).filter(s => s.length);
