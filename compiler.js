@@ -8,7 +8,7 @@ function lex(str) {
   var lxe = str.split(' ');
   var cLex = lxe;
   str = cLex;
-  var lxe = str.split(' ');
+  var lxe = str.split('	');
   var cLex = lxe;
   str = cLex;
   var lxe = str => str.split('+').map(s => s.trim()).filter(s => s.length);
